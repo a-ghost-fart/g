@@ -1,12 +1,34 @@
 package sexy.fedora.games.gaem.characters;
 
-import com.badlogic.gdx.scenes.scene2d.Actor;
+public class Player {
 
-public class Player extends Actor {
-
+    private State currentState = State.IDLE;
+    private boolean onGround = false;
 
     public Player() {
-        super();
+
     }
 
+    public enum State {
+        IDLE,
+        WALKING,
+        RUNNING,
+        JUMPING
+    }
+
+    public State getCurrentState() {
+        return currentState;
+    }
+
+    public void setCurrentState(State currentState) {
+        this.currentState = currentState;
+    }
+
+    public boolean isOnGround() {
+        return onGround;
+    }
+
+    public void setOnGround(boolean onGround) {
+        this.onGround = onGround;
+    }
 }
