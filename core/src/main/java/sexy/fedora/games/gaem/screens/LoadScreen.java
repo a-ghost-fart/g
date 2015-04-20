@@ -1,7 +1,10 @@
 package sexy.fedora.games.gaem.screens;
 
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.maps.tiled.TiledMap;
 import sexy.fedora.games.gaem.Main;
+
+import javax.xml.soap.Text;
 
 public class LoadScreen extends AbstractScreen {
 
@@ -24,6 +27,7 @@ public class LoadScreen extends AbstractScreen {
     @Override
     public void show() {
         game.assetManager.load("test_sprite.png", Texture.class);
+        game.assetManager.load("test_tileset.png", Texture.class);
         game.assetManager.finishLoading();
     }
 
