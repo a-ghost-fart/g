@@ -1,18 +1,22 @@
 package sexy.fedora.games.gaem;
 
-import com.badlogic.gdx.Game;
+import com.badlogic.gdx.*;
+import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.GL30;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.Gdx;
 import sexy.fedora.games.gaem.screens.LoadScreen;
 import sexy.fedora.games.gaem.screens.PlayScreen;
 
 public class Main extends Game {
 
-	private SpriteBatch batch;
+	public static SpriteBatch batch;
 
-	private static LoadScreen loadScreen;
-	private static PlayScreen playScreen;
+	public static int WIDTH = 800;
+	public static int HEIGHT = 600;
+	public static String TITLE = "Something";
+	public static LoadScreen loadScreen;
+	public static PlayScreen playScreen;
+	public AssetManager assetManager = new AssetManager();
 
 	@Override
 	public void create() {
@@ -20,12 +24,18 @@ public class Main extends Game {
 
 		initScreens();
 
-		setScreen(loadScreen);
+		try {
+			Gdx.graphics.setTitle(TITLE);
+			Gdx.graphics.setVSync(true);
+			Gdx.graphics.setDisplayMode(WIDTH, HEIGHT, false);
+		} finally {
+			setScreen(loadScreen);
+		}
 	}
 
 	public void initScreens() {
-		loadScreen = new LoadScreen();
-		playScreen = new PlayScreen();
+		loadScreen = new LoadScreen(this);
+		playScreen = new PlayScreen(this);
 	}
 
 	@Override

@@ -1,12 +1,15 @@
 package sexy.fedora.games.gaem.characters;
 
-public class Player {
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.math.Vector2;
+
+public class Player extends AbstractCharacter {
 
     private State currentState = State.IDLE;
     private boolean onGround = false;
 
-    public Player() {
-
+    public Player(Texture _texture) {
+        super(_texture, new Vector2(10.0f, 10.0f));
     }
 
     public enum State {
@@ -14,6 +17,12 @@ public class Player {
         WALKING,
         RUNNING,
         JUMPING
+    }
+
+    @Override
+    public void update() {
+        pos.x += 0.1f;
+        sprite.setPosition(pos.x, pos.y);
     }
 
     public State getCurrentState() {
