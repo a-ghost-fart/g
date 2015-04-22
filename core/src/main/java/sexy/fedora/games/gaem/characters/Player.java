@@ -1,5 +1,7 @@
 package sexy.fedora.games.gaem.characters;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.*;
@@ -10,12 +12,14 @@ public class Player extends AbstractCharacter {
     private boolean onGround = false;
     private Body body;
 
+    private static final float MOVEMENT_FORCE = 10f;
+
     public Player(Texture _texture, World world) {
         super(_texture, new Vector2(10.0f, 10.0f));
-        something(world);
+        initPhysics(world);
     }
 
-    private void something(World world) {
+    private void initPhysics(World world) {
         BodyDef bodyDef = new BodyDef();
         bodyDef.type = BodyDef.BodyType.DynamicBody;
         bodyDef.position.set(100, 300);
@@ -45,6 +49,13 @@ public class Player extends AbstractCharacter {
     @Override
     public void update() {
         //sprite.setPosition(body.getPosition().x - (sprite.getWidth() / 2), body.getPosition().y - (sprite.getHeight() / 2));
+
+        if (Gdx.input.isKeyPressed(Input.Keys.RIGHT)) {
+            body.applyLinearImpulse(MOVEMENT_FORCE, 0, body.getPosition().x, body.getPosition().y, true);
+        }
+        if (Gdx.input.isKeyPressed(Input.Keys.LEFT)) {
+            body.applyLinearImpulse(-MOVEMENT_FORCE, 0, body.getPosition().x, body.getPosition().y, true);
+        }
     }
 
     public State getCurrentState() {
