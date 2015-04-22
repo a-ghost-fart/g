@@ -22,7 +22,9 @@ import java.util.List;
 
 public class PlayScreen extends AbstractScreen {
 
+    private static final float TIME_STEP = 1 / 60f;
     private static final float CAM_SPEED = 5.0f;
+    private static final float GRAVITY = -100f;
     private OrthographicCamera camera;
     private SpriteBatch batch;
     private Player player;
@@ -42,7 +44,7 @@ public class PlayScreen extends AbstractScreen {
         batch = new SpriteBatch();
 
         // Physics!
-        world = new World(new Vector2(0, -10f), true);
+        world = new World(new Vector2(0, GRAVITY), true);
         box2DDebugRenderer = new Box2DDebugRenderer();
 
         map = new TmxMapLoader().load("test_map.tmx");
@@ -65,7 +67,7 @@ public class PlayScreen extends AbstractScreen {
         tiledMapRenderer.render();
 
         box2DDebugRenderer.render(world, camera.combined);
-        world.step(1 / 60f, 6, 4);
+        world.step(TIME_STEP, 6, 4);
 
         for (AbstractCharacter character : characters) {
             character.update();
