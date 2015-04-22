@@ -14,6 +14,7 @@
 
 	<properties>
 		<mainClass>sexy.fedora.games.gaem.java.MainDesktop</mainClass>
+		<box2dVersion>1.5.6</box2dVersion>
 	</properties>
 
 	<dependencies>
@@ -37,6 +38,19 @@
 			<groupId>com.badlogicgames.gdx</groupId>
 			<artifactId>gdx-platform</artifactId>
 			<classifier>natives-desktop</classifier>
+		</dependency>
+
+		<dependency>
+			<groupId>com.badlogicgames.gdx</groupId>
+			<artifactId>gdx-box2d</artifactId>
+			<version>${box2dVersion}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.badlogicgames.gdx</groupId>
+			<artifactId>gdx-box2d-platform</artifactId>
+			<classifier>natives-desktop</classifier>
+			<scope>compile</scope>
+			<version>${box2dVersion}</version>
 		</dependency>
 	</dependencies>
 
