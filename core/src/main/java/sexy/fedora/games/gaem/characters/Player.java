@@ -12,7 +12,8 @@ public class Player extends AbstractCharacter {
     private boolean onGround = false;
     private Body body;
 
-    private static final float MOVEMENT_FORCE = 10f;
+    private static final float MOVEMENT_FORCE = 5f;
+    private static final float MAX_VELOCITY = 20f;
 
     public Player(Texture _texture, World world) {
         super(_texture, new Vector2(10.0f, 10.0f));
@@ -31,12 +32,16 @@ public class Player extends AbstractCharacter {
 
         FixtureDef fixtureDef = new FixtureDef();
         fixtureDef.shape = poly;
-        fixtureDef.density = 0.5f;
+        fixtureDef.density = 1f;
         fixtureDef.friction = 0.4f;
 
+        body.setFixedRotation(true);
         body.createFixture(fixtureDef);
+        body.setBullet(true);
 
         poly.dispose();
+
+        body.setAwake(true);
     }
 
     public enum State {
@@ -50,11 +55,19 @@ public class Player extends AbstractCharacter {
     public void update() {
         //sprite.setPosition(body.getPosition().x - (sprite.getWidth() / 2), body.getPosition().y - (sprite.getHeight() / 2));
 
-        if (Gdx.input.isKeyPressed(Input.Keys.RIGHT)) {
-            body.applyLinearImpulse(MOVEMENT_FORCE, 0, body.getPosition().x, body.getPosition().y, true);
+        Vector2 position = body.getPosition();
+        Vector2 vel = body.getLinearVelocity();
+
+        if(Math.abs(vel.x) > MAX_VELOCITY) {
+            vel.x = Math.signum(vel.x) * MAX_VELOCITY;
+            body.setLinearVelocity(vel.x, vel.y);
         }
-        if (Gdx.input.isKeyPressed(Input.Keys.LEFT)) {
-            body.applyLinearImpulse(-MOVEMENT_FORCE, 0, body.getPosition().x, body.getPosition().y, true);
+
+        if (Gdx.input.isKeyPressed(Input.Keys.RIGHT) && vel.x < MAX_VELOCITY) {
+            body.applyLinearImpulse(MOVEMENT_FORCE * body.getMass(), 0, position.x, position.y, true);
+        }
+        if (Gdx.input.isKeyPressed(Input.Keys.LEFT) && vel.x > -MAX_VELOCITY) {
+            body.applyLinearImpulse(-MOVEMENT_FORCE * body.getMass(), 0, position.x, position.y, true);
         }
     }
 

@@ -81,6 +81,7 @@ public class PlayScreen extends AbstractScreen {
     }
 
     private void handleInput(float dt) {
+        /*
         if (Gdx.input.isKeyPressed(Input.Keys.A)) {
             camera.position.x -= CAM_SPEED;
         }
@@ -92,6 +93,11 @@ public class PlayScreen extends AbstractScreen {
         }
         if (Gdx.input.isKeyPressed(Input.Keys.S)) {
             camera.position.y -= CAM_SPEED;
+        }
+        */
+
+        if (Gdx.input.isKeyPressed(Input.Keys.ESCAPE)) {
+            Gdx.app.exit();
         }
     }
 
