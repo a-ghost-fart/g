@@ -23,7 +23,7 @@ public class Player extends AbstractCharacter {
     private void initPhysics(World world) {
         BodyDef bodyDef = new BodyDef();
         bodyDef.type = BodyDef.BodyType.DynamicBody;
-        bodyDef.position.set(100, 300);
+        bodyDef.position.set(200, 300);
 
         body = world.createBody(bodyDef);
 

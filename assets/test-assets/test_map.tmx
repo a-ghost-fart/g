@@ -8,4 +8,11 @@
    eJxjZmBgYB7BmIlMjM88FhLxqHmj5tHaPHz20Ns8aua3wY4Z0TAuMVLNwmUOOeGH7g5iyzkQBgCMkQTI
   </data>
  </layer>
+ <objectgroup name="obstacles" width="20" height="20">
+  <object x="128" y="96" width="448" height="32"/>
+  <object x="128" y="128" width="32" height="352"/>
+  <object x="160" y="448" width="416" height="32"/>
+  <object x="544" y="128" width="32" height="320"/>
+  <object x="320" y="384" width="32" height="64"/>
+ </objectgroup>
 </map>

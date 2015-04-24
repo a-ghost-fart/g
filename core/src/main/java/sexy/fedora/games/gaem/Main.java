@@ -22,20 +22,13 @@ public class Main extends Game {
 	public void create() {
 		batch = new SpriteBatch();
 
-		initScreens();
-
 		try {
 			Gdx.graphics.setTitle(TITLE);
 			Gdx.graphics.setVSync(true);
 			Gdx.graphics.setDisplayMode(WIDTH, HEIGHT, false);
 		} finally {
-			setScreen(loadScreen);
+			setScreen(new LoadScreen(this));
 		}
-	}
-
-	public void initScreens() {
-		loadScreen = new LoadScreen(this);
-		playScreen = new PlayScreen(this);
 	}
 
 	@Override
