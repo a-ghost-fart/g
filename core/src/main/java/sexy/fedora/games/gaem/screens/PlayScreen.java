@@ -76,6 +76,7 @@ public class PlayScreen extends AbstractScreen {
         tiledMapRenderer.setView(camera);
         tiledMapRenderer.render();
 
+        // Physics debug renderer
         box2DDebugRenderer.render(world, camera.combined);
         world.step(TIME_STEP, 6, 4);
 

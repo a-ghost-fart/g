@@ -19,7 +19,7 @@ public abstract class AbstractCharacter {
     }
 
     public void draw(SpriteBatch batch) {
-        //sprite.draw(batch);
+        sprite.draw(batch);
     }
 
     public void update() {

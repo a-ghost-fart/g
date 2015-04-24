@@ -14,8 +14,6 @@ public class Main extends Game {
 	public static int WIDTH = 800;
 	public static int HEIGHT = 600;
 	public static String TITLE = "Something";
-	public static LoadScreen loadScreen;
-	public static PlayScreen playScreen;
 	public AssetManager assetManager = new AssetManager();
 
 	@Override

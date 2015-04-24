@@ -12,7 +12,7 @@ public class Player extends AbstractCharacter {
     private boolean onGround = false;
     private Body body;
 
-    private static final float MOVEMENT_FORCE = 5f;
+    private static final float MOVEMENT_FORCE = 8f;
     private static final float MAX_VELOCITY = 20f;
 
     public Player(Texture _texture, World world) {
@@ -53,7 +53,7 @@ public class Player extends AbstractCharacter {
 
     @Override
     public void update() {
-        //sprite.setPosition(body.getPosition().x - (sprite.getWidth() / 2), body.getPosition().y - (sprite.getHeight() / 2));
+        sprite.setPosition(body.getPosition().x - (sprite.getWidth() / 2), body.getPosition().y - (sprite.getHeight() / 2));
 
         Vector2 position = body.getPosition();
         Vector2 vel = body.getLinearVelocity();
